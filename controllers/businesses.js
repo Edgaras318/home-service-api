@@ -33,17 +33,7 @@ exports.getBusinessById = async (req, res) => {
 
 // POST /businesses
 exports.createBusiness = async (req, res) => {
-    const { name, description, address, category, contactPerson, email, photos } = req.body;
-
-    const business = new Business({
-        name,
-        description,
-        address,
-        category,
-        contactPerson,
-        email,
-        photos
-    });
+    const business = new Business(req.body);
 
     try {
         const savedBusiness = await business.save();

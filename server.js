@@ -23,7 +23,6 @@ app.use('/api/bookings', bookingsRoutes);
 // Error handling middleware
 app.use(errorHandler);
 
-
 connectToDb()
     .then(() => {
         app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

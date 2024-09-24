@@ -12,16 +12,7 @@ exports.getBookingsByUserEmail = async (req, res) => {
 
 // POST /bookings
 exports.createBooking = async (req, res) => {
-    const { businessId, date, time, userEmail, userName } = req.body;
-
-    const booking = new Bookings({
-        businessId,
-        date,
-        time,
-        userEmail,
-        userName
-    });
-
+    const booking = new Bookings(req.body);
     try {
         const savedBooking = await booking.save();
         res.status(201).json(savedBooking);
@@ -34,15 +25,10 @@ exports.createBooking = async (req, res) => {
 exports.deleteBooking = async (req, res) => {
     try {
         const bookingId = req.params.id;
-
-        // Attempt to delete the booking by ID
         const deletedBooking = await Bookings.findByIdAndDelete(bookingId);
-
         if (!deletedBooking) {
             return res.status(404).json({ message: 'Booking not found' });
         }
-
-        // If deleted successfully, respond with no content (204)
         res.status(204).send();
     } catch (err) {
         res.status(500).json({ message: err.message });
