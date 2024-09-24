@@ -108,6 +108,15 @@ A RESTful API for managing home service bookings, businesses, and categories. Th
 
 - **DELETE** `/api/categories/:id`: Delete a category by ID
 
+## Swagger API Documentation
+
+This API is documented using **Swagger**, providing a user-friendly interface to explore and test the API endpoints interactively.
+
+### Accessing the Swagger Documentation
+
+To access the Swagger API documentation, start your server and navigate to the following URL in your web browser:
+http://localhost:5000/api-docs
+
 ## Setup
 
 1. Clone the repository:
