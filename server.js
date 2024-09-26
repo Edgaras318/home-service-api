@@ -3,8 +3,7 @@ const cors = require("cors");
 const bodyParser = require('body-parser');
 const { connectToDb, PORT } = require("./config/db");
 const swaggerUi = require('swagger-ui-express');
-const swaggerJsdoc = require('swagger-jsdoc');
-const swaggerOptions = require('./swaggerOptions');
+const fs = require('fs');
 
 const categoriesRoutes = require('./routes/categories');
 const businessesRoutes = require('./routes/businesses');
@@ -15,12 +14,13 @@ const errorHandler = require('./middlewares/errorHandler');
 const app = express();
 
 // Middleware
-app.use(cors()); // Make sure to call the cors function
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Swagger documentation
-const swaggerDocs = swaggerJsdoc(swaggerOptions);
+// Swagger documentation setup
+const swaggerFile = fs.readFileSync('./swagger.json', 'utf8'); // Read the JSON file
+const swaggerDocs = JSON.parse(swaggerFile); // Parse the JSON content
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 // Routes
