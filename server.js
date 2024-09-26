@@ -1,7 +1,7 @@
 const express = require('express');
-const cors = require("cors");
+const cors = require('cors');
 const bodyParser = require('body-parser');
-const { connectToDb, PORT } = require("./config/db");
+const { connectToDb, PORT } = require('./config/db');
 const swaggerUi = require('swagger-ui-express');
 const fs = require('fs');
 
@@ -33,9 +33,9 @@ app.use('/api/auth', authRoutes);
 app.use(errorHandler);
 
 connectToDb()
-    .then(() => {
-        app.listen(PORT, () => console.log(`Server running on port ${PORT}`)); // eslint-disable-line no-console
-    })
-    .catch((err) => {
-        console.error("Failed to connect to the database", err); // eslint-disable-line no-console
-    });
+  .then(() => {
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`)); // eslint-disable-line no-console
+  })
+  .catch((err) => {
+    console.error('Failed to connect to the database', err); // eslint-disable-line no-console
+  });
