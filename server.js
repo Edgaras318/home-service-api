@@ -9,6 +9,7 @@ const swaggerOptions = require('./swaggerOptions');
 const categoriesRoutes = require('./routes/categories');
 const businessesRoutes = require('./routes/businesses');
 const bookingsRoutes = require('./routes/bookings');
+const authRoutes = require('./routes/auth');
 const errorHandler = require('./middlewares/errorHandler');
 
 const app = express();
@@ -26,6 +27,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/businesses', businessesRoutes);
 app.use('/api/bookings', bookingsRoutes);
+app.use('/api/auth', authRoutes);
 
 // Error handling middleware
 app.use(errorHandler);
