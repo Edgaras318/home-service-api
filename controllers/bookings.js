@@ -34,4 +34,3 @@ exports.deleteBooking = async (req, res) => {
     return res.status(500).json({ message: err.message }); // Added 'return' here
   }
 };
-
