@@ -12,6 +12,7 @@ const authMiddleware = (req, res, next) => {
         req.user = decoded; // Attach the decoded user to the request object
         next();
     } catch (err) {
+        console.log(err); // eslint-disable-line no-console
         res.status(400).json({ message: 'Invalid token.' });
     }
 };

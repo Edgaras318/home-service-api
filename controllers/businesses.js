@@ -1,4 +1,5 @@
 const Business = require('../models/business');
+const Booking = require('../models/booking');
 
 // GET /businesses
 exports.getAllBusinesses = async (req, res) => {

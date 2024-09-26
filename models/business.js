@@ -33,13 +33,6 @@ const businessSchema = new mongoose.Schema({
     timestamps: true
 });
 
-const objectId = (value, helpers) => {
-    if (!mongoose.Types.ObjectId.isValid(value)) {
-        return helpers.error('any.invalid');
-    }
-    return value; // Return the valid value
-};
-
 // Joi Validation Schema
 const validateBusiness = (data) => {
     const schema = Joi.object({
@@ -59,7 +52,7 @@ businessSchema.pre('save', function(next) {
     // Extract only necessary fields for validation
     const { name, description, address, category, contactPerson, email, photos } = this;
 
-    const { error } = validateBusiness({
+    const { err } = validateBusiness({
         name,
         description,
         address,
@@ -69,9 +62,9 @@ businessSchema.pre('save', function(next) {
         email,
         photos
     });
-    if (error) {
-        lo
-        next(new Error(error.details[0].message));
+    if (err) {
+        console.log(err) // eslint-disable-line no-console
+        next(new Error(err.details[0].message));
     } else {
         next();
     }

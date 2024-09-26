@@ -1,7 +1,6 @@
 const User = require('../models/user').User;
 const { generateToken } = require('../utils/tokenUtils');
 const { validateUser } = require('../models/user');
-const bcrypt = require('bcryptjs');
 
 // POST /auth/login
 exports.login = async (req, res) => {

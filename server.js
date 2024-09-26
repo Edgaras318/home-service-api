@@ -34,8 +34,8 @@ app.use(errorHandler);
 
 connectToDb()
     .then(() => {
-        app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+        app.listen(PORT, () => console.log(`Server running on port ${PORT}`)); // eslint-disable-line no-console
     })
     .catch((err) => {
-        console.error("Failed to connect to the database", err);
+        console.error("Failed to connect to the database", err); // eslint-disable-line no-console
     });
