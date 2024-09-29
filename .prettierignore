@@ -1,0 +1,5 @@
+# Ignore ESLint config
+eslint.config.mjs
+
+# Ignore other files or directories
+node_modules
